@@ -116,12 +116,14 @@ Have a truly beautiful, blessed, and wonderful birthday ahead! 💖🌸`;
         if (typeof drawPreview === 'function') drawPreview();
     };
     customImage.onerror = () => {
-        // Fallback to face.png if face.jpg is not found
-        if (!customImage.src.endsWith('face.png')) {
+        // Fallback checks: face.jpeg -> face.jpg -> face.png
+        if (customImage.src.endsWith('face.jpeg')) {
+            customImage.src = 'face.jpg';
+        } else if (customImage.src.endsWith('face.jpg')) {
             customImage.src = 'face.png';
         }
     };
-    customImage.src = 'face.jpg';
+    customImage.src = 'face.jpeg';
     let showPartyHat = true;
 
     if (partyHatToggle) {
