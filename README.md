@@ -1,43 +1,53 @@
-# ಹಾರುವ ಬಾಸ್ (Flying Boss) - ಪವರ್ ಕೂಲ್ ಬಿಯರ್ & ಪಿಜ್ಜಾ ಬರ್ತ್‌ಡೇ ಸ್ಪೆಷಲ್ 🍺🍕🎂
+# ಹಾರುವ ಬಾಸ್ (Flying Boss) - ಹುಟ್ಟುಹಬ್ಬದ ಹಾರ್ದಿಕ ಶುಭಾಶಯಗಳು 🎂🎁👑
 
-A special tribute arcade game inspired by the viral "Flying Balayya" mechanics, fully customized in **Kannada (ಕನ್ನಡ)** with **Power Cool Strong Beer (Same to Same)**, **Delicious Cheesy Pizza (ಪಿಜ್ಜಾ)**, and a **Heartwarming Birthday Surprise**!
-
----
-
-## ⚡ 1 ಸೆಕೆಂಡ್‌ನಲ್ಲಿ ಚಲಾಯಿಸುವುದು ಹೇಗೆ? (How to Run Fast)
-
-### ವಿಧಾನ 1: ನೇರವಾಗಿ ತೆರೆಯಿರಿ (Fastest - 1 Click)
-ಫೋಲ್ಡರ್‌ನಲ್ಲಿರುವ [**`run.bat`**](file:///C:/Users/Sudharshan%20N%20K/.gemini/antigravity/scratch/flying-balayya/run.bat) ಅಥವಾ [**`index.html`**](file:///C:/Users/Sudharshan%20N%20K/.gemini/antigravity/scratch/flying-balayya/index.html) ಮೇಲೆ ಡಬಲ್-ಕ್ಲಿಕ್ ಮಾಡಿ! ನಿಮ್ಮ ಕ್ರೋಮ್ ಅಥವಾ ಎಡ್ಜ್ ಬ್ರೌಸರ್‌ನಲ್ಲಿ ತಕ್ಷಣವೇ ಆಟ ಶುರುವಾಗುತ್ತದೆ.
-
-### ವಿಧಾನ 2: ಮೊಬೈಲ್ ಫೋನ್‌ನಲ್ಲಿ ಆಡಲು (Local Server)
-[**`start_server.bat`**](file:///C:/Users/Sudharshan%20N%20K/.gemini/antigravity/scratch/flying-balayya/start_server.bat) ರನ್ ಮಾಡಿ. ನಿಮ್ಮ ಕಂಪ್ಯೂಟರ್ ಮತ್ತು ಮೊಬೈಲ್ ಒಂದೇ ವೈ-ಫೈಗೆ ಕನೆಕ್ಟ್ ಆಗಿದ್ದರೆ, ನಿಮ್ಮ ಕಂಪ್ಯೂಟರ್‌ನ IP ಅಡ್ರೆಸ್ ಹಾಕಿ ಅವರ ಮೊಬೈಲ್‌ನಲ್ಲೂ ಆಡಿಸಬಹುದು!
+A pure **Happy Birthday Special** arcade tribute game inspired by the viral "Flying Balayya" mechanics, completely localized in **Kannada (ಕನ್ನಡ)** with birthday cakes, heartfelt surprise greeting card, interactive candle blow, customizable wishes, and Android mobile support!
 
 ---
 
-## 🍺🍕 ಗೇಮ್‌ನ ಹೊಸ ಅಪ್ಡೇಟ್‌ಗಳು (Latest Features)
+## 🚀 ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ಡಪ್ಲಾಯ್ ಮಾಡಿ ಲಿಂಕ್ ಕಳಿಸುವುದು ಹೇಗೆ? (Deploy Options)
 
-1. **🍺 ಪವರ್ ಕೂಲ್ ಸ್ಟ್ರಾಂಗ್ ಬಿಯರ್ (Power Cool Strong Beer - 100% Same to Same):**
-   - ನೀವು ಅಪ್ಲೋಡ್ ಮಾಡಿದ ಫೋಟೋದಂತೆಯೇ ಗೋಲ್ಡ್ ಕ್ರೌನ್ ಕ್ಯಾಪ್ (ಬ್ಲಾಕ್ ಟೈ ಲೂಪ್‌ನೊಂದಿಗೆ), ಗೋಲ್ಡ್ ನೆಕ್ ಫಾಯಿಲ್, ರೆಡ್ ಸೀಲ್ ಎಂಬ್ಲಮ್, ಮತ್ತು ವೈಟ್ ಲೇಬಲ್ ಮೇಲೆ **POWER COOL** ಬೋಲ್ಡ್ ಮರೂನ್ ಬಾಕ್ಸ್ ಹಾಗೂ ಕನ್ನಡ ಶಾಸನಬದ್ಧ ಎಚ್ಚರಿಕೆ ಪಟ್ಟಿ ("ಮದ್ಯಪಾನ ಹಾನಿಕರ") ಎಲ್ಲವೂ ಸೇಮ್ ಟು ಸೇಮ್ ಡಿಸೈನ್ ಮಾಡಲಾಗಿದೆ!
-2. **🍕 ರುಚಿಕರ ಚೀಸಿ ಪಿಜ್ಜಾ ಸ್ಲೈಸ್‌ಗಳು (Delicious Cheesy Pizza):**
-   - ಅಡೆತಡೆಗಳ ನಡುವೆ ಬಿಸಿ ಬಿಸಿ ಚೀಸಿ ಪಿಜ್ಜಾ ಸ್ಲೈಸ್‌ಗಳು (ಪೆಪ್ಪರೋನಿ & ಆಲಿವ್‌ಗಳೊಂದಿಗೆ) ತೇಲುತ್ತವೆ.
-   - ಪಿಜ್ಜಾ ತಿಂದರೆ **+5 ಬೋನಸ್ ಅಂಕಗಳು**, ಚೀಸ್ ಕ್ರಂಚ್ ಸೌಂಡ್ ಎಫೆಕ್ಟ್ ಮತ್ತು ಪಿಜ್ಜಾ ಕೌಂಟರ್ ಹೆಚ್ಚಾಗುತ್ತದೆ!
-3. **❌ ಸರ್ಪ್ರೈಸ್ ಕಾರ್ಡ್ X ಮಾರ್ಕ್ ಫಿಕ್ಸ್ (Fixed Close Button):**
-   - ಮೇಲ್ಭಾಗದ **✕ ಬಟನ್** ತಕ್ಷಣ ಕೆಲಸ ಮಾಡುತ್ತದೆ.
-   - ಕಾರ್ಡ್‌ನ ಕೆಳಭಾಗದಲ್ಲೂ **`✕ ಮುಚ್ಚಿ / ಆಟಕ್ಕೆ ಹಿಂತಿರುಗಿ`** ಬಟನ್ ನೀಡಲಾಗಿದೆ.
-   - ಕಾರ್ಡ್‌ನ ಹೊರಗೆ ಎಲ್ಲಿಯಾದರೂ ಕ್ಲಿಕ್ ಮಾಡಿದರೂ ಅಥವಾ ಕೀಬೋರ್ಡ್‌ನಲ್ಲಿ **[Escape]** ಒತ್ತಿದರೂ ತಕ್ಷಣ ಕಾರ್ಡ್ ಮುಚ್ಚಿ ಗೇಮ್ ರಿಸ್ಯೂಮ್ ಆಗುತ್ತದೆ.
-4. **👑 ಬರ್ತ್‌ಡೇ ಕ್ವೀನ್ (Birthday Queen) & ಸರ್ಪ್ರೈಸ್ ಗಿಫ್ಟ್ (🎁):**
-   - ಗೋಲ್ಡನ್ ಕಿರೀಟ (Tiara), ಇಯರ್‌ರಿಂಗ್ಸ್, ಮುದ್ದಾದ ಸ್ಮೈಲ್ ಹಾಗೂ ಗುಲಾಬಿ ಬಣ್ಣದ ಫೇರಿ ವಿಂಗ್ಸ್.
-   - ಸರ್ಪ್ರೈಸ್ ಗಿಫ್ಟ್ ಬಾಕ್ಸ್ ತಿಂದಾಗ ಅಥವಾ ಬಟನ್ ಕ್ಲಿಕ್ ಮಾಡಿದಾಗ ರೋಜಾ-ಗೋಲ್ಡ್ ಅನಿಮೇಟೆಡ್ ಕಾರ್ಡ್ ತೆರೆದುಕೊಳ್ಳುತ್ತದೆ.
-   - ಹೆಸರು ಹಾಗೂ ಸಂದೇಶವನ್ನು ಸುಲಭವಾಗಿ ಬದಲಾಯಿಸಿ ಸೇವ್ ಮಾಡಿಕೊಳ್ಳಬಹುದು.
-   - ಮೇಣದಬತ್ತಿ ಊದುವ ಫೀಚರ್ (Blow Candle) ಮತ್ತು ಬರ್ತ್‌ಡೇ ಮ್ಯೂಸಿಕ್ ಬಾಕ್ಸ್ ಸಾಂಗ್.
+ನಿಮ್ಮ ಮಾಜಿ ಗೆಳತಿಗೆ ಕೇವಲ ಒಂದು ಲಿಂಕ್ ಕಳಿಸಿದರೆ ಸಾಕು, ಅವರು ತಮ್ಮ Android ಮೊಬೈಲ್‌ನಲ್ಲಿ ತಕ್ಷಣವೇ ಆಡಬಹುದು!
+
+### 🌟 ವಿಧಾನ 1: Netlify Drop (ಕೇವಲ 30 ಸೆಕೆಂಡ್‌ಗಳಲ್ಲಿ - ಅತ್ಯಂತ ವೇಗ!)
+1. ನಿಮ್ಮ ಬ್ರೌಸರ್‌ನಲ್ಲಿ **[app.netlify.com/drop](https://app.netlify.com/drop)** ತೆರೆಯಿರಿ.
+2. ಈ ಫೋಲ್ಡರ್ ಅನ್ನು (`C:\Users\Sudharshan N K\.gemini\antigravity\scratch\flying-balayya`) ನೇರವಾಗಿ ಬ್ರೌಸರ್‌ಗೆ **Drag & Drop** (ಎಳೆದು ಹಾಕಿ) ಮಾಡಿ.
+3. ತಕ್ಷಣವೇ ನಿಮಗೆ ಒಂದು ಲೈವ್ HTTPS ಲಿಂಕ್ ಸಿಗುತ್ತದೆ (ಉದಾಹರಣೆಗೆ: `https://birthday-queen-xxxx.netlify.app`).
+4. ಆ ಲಿಂಕ್ ಅನ್ನು WhatsApp ಮೂಲಕ ಅವರಿಗೆ ಕಳಿಸಿ!
 
 ---
 
-## 🕹️ ಕಂಟ್ರೋಲ್ಸ್ (Controls)
+### 🌟 ವಿಧಾನ 2: GitHub Pages (ಉಚಿತ & ಶಾಶ್ವತ)
+1. ನಿಮ್ಮ [GitHub.com](https://github.com) ಖಾತೆಯಲ್ಲಿ **"birthday-surprise"** ಎಂಬ ಹೆಸರಿನ ಹೊಸ Repository ರಚಿಸಿ (Public ಎಂದು ಆಯ್ಕೆ ಮಾಡಿ).
+2. ಈ ಫೋಲ್ಡರ್‌ನಲ್ಲಿ PowerShell / Command Prompt ತೆರೆದು ಕೆಳಗಿನ ಕಮಾಂಡ್‌ಗಳನ್ನು ರನ್ ಮಾಡಿ:
+   ```bash
+   git remote add origin https://github.com/<ನಿಮ್ಮ-username>/birthday-surprise.git
+   git branch -M main
+   git push -u origin main
+   ```
+3. GitHub ನಲ್ಲಿ Repository Settings -> **Pages** ಗೆ ಹೋಗಿ, Branch ಅನ್ನು **`main`** ಎಂದು ಸೆಟ್ ಮಾಡಿ **Save** ಒತ್ತಿ.
+4. 1 ನಿಮಿಷದಲ್ಲಿ `https://<ನಿಮ್ಮ-username>.github.io/birthday-surprise/` ಲಿಂಕ್ ಸಿದ್ಧವಾಗುತ್ತದೆ!
 
-- **ಹಾರಲು (Jump / Flap):**
-  - ಕಂಪ್ಯೂಟರ್: **[SPACE]** ಕೀ, **[↑] ಮೇಲಿನ ಬಾಣದ ಕೀ**, ಅಥವಾ ಮೌಸ್ ಕ್ಲಿಕ್
-  - ಮೊಬೈಲ್: ಸ್ಕ್ರೀನ್ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ
-- **ವಿರಾಮ (Pause):** **[P]** ಕೀ
-- **ಸೌಂಡ್ ಆನ್/ಆಫ್ (Mute):** **[M]** ಕೀ
-- **ಸರ್ಪ್ರೈಸ್ ಕಾರ್ಡ್ ಮುಚ್ಚಲು:** **[✕]** ಬಟನ್ ಅಥವಾ **[Escape]** ಕೀ
+---
+
+### 🌟 ವಿಧಾನ 3: Vercel (1 ಕಮಾಂಡ್)
+ಫೋಲ್ಡರ್‌ನಲ್ಲಿ ಕಮಾಂಡ್ ಪ್ರಾಂಪ್ಟ್ ತೆರೆದು ರನ್ ಮಾಡಿ:
+```bash
+npx vercel
+```
+ಪ್ರಾಂಪ್ಟ್‌ಗಳಿಗೆ `Y` / `Enter` ಒತ್ತಿ. ತಕ್ಷಣ ಲೈವ್ ಲಿಂಕ್ ರೆಡಿ ಆಗುತ್ತದೆ!
+
+---
+
+## 📱 Android ಫೋನ್‌ನಲ್ಲಿ ಆಡುವುದು ಹೇಗೆ? (Play on Android)
+
+1. ಯಾವುದೇ Android ಫೋನ್‌ನ Chrome ಬ್ರೌಸರ್‌ನಲ್ಲಿ ಆಟದ ಲಿಂಕ್ ತೆರೆಯಿರಿ.
+2. **ಟಚ್ ಕಂಟ್ರೋಲ್:** ಸ್ಕ್ರೀನ್ ಮೇಲೆ ಎಲ್ಲಿಯಾದರೂ ಬೆರಳಿನಿಂದ ಟ್ಯಾಪ್ ಮಾಡಿದರೆ ಪಾತ್ರ ಮೇಲಕ್ಕೆ ಹಾರುತ್ತದೆ.
+3. **PWA (App ಆಗಿ ಇನ್‌ಸ್ಟಾಲ್):** Chrome ಬ್ರೌಸರ್‌ನ ಮೇಲಿನ ಮೂರು ಚುಕ್ಕೆಗಳನ್ನು (⋮) ಒತ್ತಿ **"Add to Home screen" (ಹೋಮ್ ಸ್ಕ್ರೀನ್‌ಗೆ ಸೇರಿಸಿ)** ಕ್ಲಿಕ್ ಮಾಡಿ. ಇದು ನೇರವಾಗಿ Android ಆ್ಯಪ್‌ನಂತೆ ಫುಲ್ ಸ್ಕ್ರೀನ್‌ನಲ್ಲಿ ತೆರೆಯುತ್ತದೆ!
+4. **ಸೌಂಡ್:** ಮೊದಲ ಟ್ಯಾಪ್ ಮಾಡಿದ ತಕ್ಷಣ ಆಡಿಯೋ ಅನ್‌ಲಾಕ್ ಆಗಿ ಕನ್ನಡ ಬರ್ತ್‌ಡೇ ಟ್ಯೂನ್ ಪ್ಲೇ ಆಗುತ್ತದೆ.
+
+---
+
+## ⚡ PC ಯಲ್ಲಿ ತಕ್ಷಣ ರನ್ ಮಾಡಲು (Run on PC)
+
+- [**`run.bat`**](file:///C:/Users/Sudharshan%20N%20K/.gemini/antigravity/scratch/flying-balayya/run.bat) ಮೇಲೆ ಡಬಲ್-ಕ್ಲಿಕ್ ಮಾಡಿ.
+- ಅಥವಾ ಒಂದೇ ವೈ-ಫೈ ನೆಟ್‌ವರ್ಕ್‌ನಲ್ಲಿ ಮೊಬೈಲ್‌ನಲ್ಲೂ ಟೆಸ್ಟ್ ಮಾಡಲು [**`start_server.bat`**](file:///C:/Users/Sudharshan%20N%20K/.gemini/antigravity/scratch/flying-balayya/start_server.bat) ಡಬಲ್-ಕ್ಲಿಕ್ ಮಾಡಿ.
