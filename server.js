@@ -2,6 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
+const { exec } = require('child_process');
 
 const PORT = 8080;
 const MIME = {
@@ -55,4 +56,10 @@ server.listen(PORT, '0.0.0.0', () => {
     console.log('  Tip: Connect PC & Android phone to the same Wi-Fi network.');
     console.log('  Press Ctrl+C in this window to stop the server.');
     console.log('==============================================================');
+
+    try {
+        if (process.platform === 'win32') {
+            exec(`start http://localhost:${PORT}`);
+        }
+    } catch (err) {}
 });
