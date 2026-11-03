@@ -1,0 +1,18 @@
+{
+  "name": "ಹಾರುವ ಬಾಸ್ - Birthday Surprise",
+  "short_name": "Birthday Boss",
+  "description": "ಹುಟ್ಟುಹಬ್ಬದ ಹಾರ್ದಿಕ ಶುಭಾಶಯಗಳು - Special Birthday Arcade Game",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b0813",
+  "theme_color": "#ff4757",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

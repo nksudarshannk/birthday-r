@@ -1,5 +1,5 @@
-// Kannada Birthday, Power Cool Beer & Pizza Audio Engine
-// Supports procedural Kannada Folk Tamate + Birthday Synth Fanfare + Pizza Chomp & Power Cool Cheers
+// Kannada Birthday Special Audio Engine
+// Supports procedural Kannada Folk Tamate + Birthday Synth Fanfare + Cake Melodies
 
 class KannadaSoundController {
     constructor() {
@@ -113,7 +113,7 @@ class KannadaSoundController {
         noise.start(now);
     }
 
-    // Power Cool Beer Bottle Clink / Score Sound
+    // Obstacle Pass / Score Sound
     playScore() {
         if (!this.enabled) return;
         this.init();
@@ -153,67 +153,6 @@ class KannadaSoundController {
             osc.start(now + idx * 0.03);
             osc.stop(now + idx * 0.03 + 0.26);
         });
-    }
-
-    // Pizza Bite / Chomp Sound Effect 🍕
-    playPizzaChomp() {
-        if (!this.enabled) return;
-        this.init();
-        if (!this.ctx) return;
-
-        const now = this.ctx.currentTime;
-
-        // 1. Crispy crust bite crunch (Noise burst with lowpass modulation)
-        const crunchBuffer = this.createNoiseBuffer(0.14);
-        const crunch = this.ctx.createBufferSource();
-        crunch.buffer = crunchBuffer;
-
-        const filter = this.ctx.createBiquadFilter();
-        filter.type = 'bandpass';
-        filter.frequency.setValueAtTime(1200, now);
-        filter.frequency.exponentialRampToValueAtTime(450, now + 0.12);
-        filter.Q.value = 3.0;
-
-        const gain = this.ctx.createGain();
-        gain.gain.setValueAtTime(0.35, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.14);
-
-        crunch.connect(filter);
-        filter.connect(gain);
-        gain.connect(this.ctx.destination);
-        crunch.start(now);
-
-        // 2. Cheesy "Gulp / Mmm" cartoon pop
-        const popOsc = this.ctx.createOscillator();
-        const popGain = this.ctx.createGain();
-        popOsc.type = 'sine';
-        popOsc.frequency.setValueAtTime(320, now + 0.04);
-        popOsc.frequency.exponentialRampToValueAtTime(680, now + 0.16);
-
-        popGain.gain.setValueAtTime(0, now);
-        popGain.gain.setValueAtTime(0.25, now + 0.04);
-        popGain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
-
-        popOsc.connect(popGain);
-        popGain.connect(this.ctx.destination);
-        popOsc.start(now + 0.04);
-        popOsc.stop(now + 0.25);
-
-        // 3. Cheerful rewarding ding
-        const ding = this.ctx.createOscillator();
-        const dingGain = this.ctx.createGain();
-        ding.type = 'triangle';
-        ding.frequency.setValueAtTime(880, now + 0.1);
-        ding.frequency.setValueAtTime(1174.66, now + 0.18);
-
-        dingGain.gain.setValueAtTime(0, now);
-        dingGain.gain.setValueAtTime(0.18, now + 0.1);
-        dingGain.gain.exponentialRampToValueAtTime(0.001, now + 0.38);
-
-        ding.connect(dingGain);
-        dingGain.connect(this.ctx.destination);
-        ding.start(now + 0.1);
-        ding.stop(now + 0.4);
     }
 
     // Cake Collect Sound
@@ -315,7 +254,7 @@ class KannadaSoundController {
         }, 150);
     }
 
-    // Power Cool Beer Bottle Crash Sound
+    // Obstacle Crash Sound
     playCrash() {
         if (!this.enabled) return;
         this.init();

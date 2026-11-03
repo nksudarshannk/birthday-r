@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3d122b" />
+      <stop offset="100%" stop-color="#0b0813" />
+    </radialGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffeaa7" />
+      <stop offset="50%" stop-color="#f39c12" />
+      <stop offset="100%" stop-color="#d35400" />
+    </linearGradient>
+    <linearGradient id="karnatakaRed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff4757" />
+      <stop offset="100%" stop-color="#b33939" />
+    </linearGradient>
+    <linearGradient id="karnatakaYellow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fed330" />
+      <stop offset="100%" stop-color="#f7b731" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle with gold border -->
+  <circle cx="256" cy="256" r="248" fill="url(#bgGlow)" stroke="url(#goldGrad)" stroke-width="12" />
+
+  <!-- Karnataka Flag ribbons -->
+  <path d="M 60 256 Q 256 220 452 256 L 440 286 Q 256 250 72 286 Z" fill="url(#karnatakaYellow)" opacity="0.6"/>
+  <path d="M 72 286 Q 256 250 440 286 L 428 316 Q 256 280 84 316 Z" fill="url(#karnatakaRed)" opacity="0.6"/>
+
+  <!-- Birthday Cake Base -->
+  <rect x="156" y="270" width="200" height="90" rx="16" fill="url(#goldGrad)" stroke="#ffffff" stroke-width="3"/>
+  <path d="M 156 300 Q 181 315 206 300 Q 231 315 256 300 Q 281 315 306 300 Q 331 315 356 300 L 356 270 L 156 270 Z" fill="#ffffff" opacity="0.85"/>
+
+  <!-- Candle -->
+  <rect x="246" y="210" width="20" height="60" rx="5" fill="#ffffff" stroke="#ff4757" stroke-width="3"/>
+  <!-- Flame -->
+  <path d="M 256 160 C 240 185 240 205 256 208 C 272 205 272 185 256 160 Z" fill="#ff9f43" />
+  <circle cx="256" cy="195" r="5" fill="#feca57" />
+
+  <!-- Crown on Top -->
+  <path d="M 186 160 L 216 195 L 256 140 L 296 195 L 326 160 L 316 215 L 196 215 Z" fill="url(#goldGrad)" stroke="#ffeaa7" stroke-width="3"/>
+  <circle cx="186" cy="155" r="7" fill="#ff4757"/>
+  <circle cx="256" cy="135" r="9" fill="#ff4757"/>
+  <circle cx="326" cy="155" r="7" fill="#ff4757"/>
+
+  <!-- Stars / Sparkles -->
+  <text x="110" y="180" font-size="36" fill="#ffeaa7">✨</text>
+  <text x="360" y="180" font-size="36" fill="#ffeaa7">✨</text>
+  <text x="236" y="420" font-size="42" text-anchor="middle" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" fill="#fed330">HAPPY BIRTHDAY</text>
+</svg>

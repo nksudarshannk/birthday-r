@@ -1059,7 +1059,12 @@ Have a truly beautiful, blessed, and wonderful birthday ahead! 💖🌸`;
         wishRevealedText.classList.add('hidden');
     }
 
+    let lastActionTime = 0;
+    let modalClosedRecently = 0;
+
     function closeSurpriseCard() {
+        if (surpriseCardModal.classList.contains('hidden')) return;
+        modalClosedRecently = Date.now();
         surpriseCardModal.classList.remove('active');
         surpriseCardModal.classList.add('hidden');
 
@@ -1101,6 +1106,7 @@ Have a truly beautiful, blessed, and wonderful birthday ahead! 💖🌸`;
                 closeSurpriseCard();
             }
             if (!customizerModal.classList.contains('hidden')) {
+                modalClosedRecently = Date.now();
                 customizerModal.classList.remove('active');
                 customizerModal.classList.add('hidden');
             }
@@ -1192,6 +1198,11 @@ Have a truly beautiful, blessed, and wonderful birthday ahead! 💖🌸`;
     }
 
     function handleAction() {
+        const now = Date.now();
+        if (now - lastActionTime < 90) return;
+        if (now - modalClosedRecently < 250) return;
+        lastActionTime = now;
+
         if (!surpriseCardModal.classList.contains('hidden') || !customizerModal.classList.contains('hidden')) {
             return;
         }
@@ -1337,6 +1348,7 @@ Have a truly beautiful, blessed, and wonderful birthday ahead! 💖🌸`;
 
     btnCancelSurprise.addEventListener('click', (e) => {
         e.stopPropagation();
+        modalClosedRecently = Date.now();
         customizerModal.classList.remove('active');
         customizerModal.classList.add('hidden');
     });
