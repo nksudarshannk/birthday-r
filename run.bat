@@ -1,0 +1,3 @@
+@echo off
+echo Starting Flying Boss - Birthday Surprise Game...
+start "" "%~dp0index.html"

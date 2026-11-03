@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ಹಾರುವ ಬಾಸ್ (Flying Boss) - ಹುಟ್ಟುಹಬ್ಬದ ಹಾರ್ದಿಕ ಶುಭಾಶಯಗಳು 🎂🎁</title>
+    <!-- Google Fonts: Anek Kannada, Bungee, Montserrat, Great Vibes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Kannada:wght@400;600;700;800;900&family=Bungee&family=Great+Vibes&family=Montserrat:wght@600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-wrapper">
+        <!-- Karnataka Flag & Birthday Strip Header -->
+        <div class="karnataka-banner">
+            <span class="flag-yellow"></span>
+            <span class="flag-red"></span>
+            <div class="banner-title">🎉 ಹುಟ್ಟುಹಬ್ಬದ ಹಾರ್ದಿಕ ಶುಭಾಶಯಗಳು! • Happy Birthday Special 🎂🎁</div>
+        </div>
+
+        <!-- Main Game Canvas Container -->
+        <div id="canvas-container">
+            <canvas id="gameCanvas" width="480" height="720"></canvas>
+
+            <!-- Floating In-Game HUD -->
+            <div id="hud-layer" class="overlay-layer">
+                <div class="hud-top">
+                    <div class="score-container">
+                        <span class="hud-label">ಅಂಕ (SCORE)</span>
+                        <div class="score-display">
+                            <span id="score-val">0</span>
+                        </div>
+                    </div>
+
+                    <!-- Birthday Cake Collected Badge -->
+                    <div class="cake-counter-badge" title="ಬರ್ತ್‌ಡೇ ಕೇಕ್ ಸಂಗ್ರಹ">
+                        <span class="cake-icon">🎂</span>
+                        <span id="cake-count">0</span>
+                    </div>
+
+                    <!-- Surprise Gift Quick Button -->
+                    <button id="btn-hud-surprise" class="btn-surprise-pill" title="ಸರ್ಪ್ರೈಸ್ ಕಾರ್ಡ್ ತೆರೆಯಿರಿ">
+                        <span class="gift-anim">🎁</span>
+                        <span class="gift-txt">ಸರ್ಪ್ರೈಸ್!</span>
+                    </button>
+
+                    <div class="hud-controls">
+                        <button id="btn-sound" class="hud-btn" title="ಸೌಂಡ್ ಆನ್/ಆಫ್ [M]" aria-label="Toggle Sound">
+                            <span class="icon">🔊</span>
+                        </button>
+                        <button id="btn-pause" class="hud-btn" title="ವಿರಾಮ [P]" aria-label="Pause Game">
+                            <span class="icon">⏸️</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Birthday Dialogue Pop-up Notification -->
+                <div id="dialogue-banner" class="hidden">
+                    <span id="dialogue-text">ಹುಟ್ಟುಹಬ್ಬದ ಹಾರ್ದಿಕ ಶುಭಾಶಯಗಳು! 🎂🎉</span>
+                </div>
+            </div>
+
+            <!-- Start / Menu Overlay Screen -->
+            <div id="start-screen" class="overlay-layer active">
+                <div class="menu-box">
+                    <div class="title-container">
+                        <div class="sub-badge">🎂 HAPPY BIRTHDAY SPECIAL 🎂</div>
+                        <h1 class="game-title">
+                            <span class="word-kannada">ಹಾರುವ ಬಾಸ್</span>
+                            <span class="word-english">HAPPY BIRTHDAY</span>
+                        </h1>
+                        <p class="tagline">"ಹುಟ್ಟುಹಬ್ಬದ ಹಾರ್ದಿಕ ಶುಭಾಶಯಗಳು! ಬರ್ತ್‌ಡೇ ಕೇಕ್ & ಗಿಫ್ಟ್ ಹಿಡಿಯಿರಿ!" 🎂🎁</p>
+                    </div>
+
+                    <!-- Personalized Name Display & Edit Trigger -->
+                    <div class="name-badge-bar">
+                        <span class="name-lbl">ಬರ್ತ್‌ಡೇ ಕ್ವೀನ್:</span>
+                        <b id="display-her-name" class="name-highlight">Birthday Queen 👑</b>
+                        <button id="btn-edit-surprise" class="btn-edit-sm" title="ಹೆಸರು & ಹಾರೈಕೆ ಸಂದೇಶ ಬದಲಾಯಿಸಿ">✏️ ಬದಲಾಯಿಸಿ</button>
+                    </div>
+
+                    <!-- Character Live Preview -->
+                    <div class="character-preview-card">
+                        <div class="avatar-glow">
+                            <canvas id="previewCanvas" width="90" height="90"></canvas>
+                        </div>
+                        <div class="skin-selector">
+                            <span class="select-label">ಬರ್ತ್‌ಡೇ ಹೀರೋ / ಕ್ವೀನ್ ಆರಿಸಿ:</span>
+                            <div class="skin-tabs">
+                                <button class="skin-tab active" data-skin="queen">ಬರ್ತ್‌ಡೇ ಕ್ವೀನ್ 👑</button>
+                                <button class="skin-tab" data-skin="rocky">ರಾಕಿ ಭಾಯ್ (KGF)</button>
+                                <button class="skin-tab" data-skin="appu">ಪವರ್ ಸ್ಟಾರ್ ಅಪ್ಪು</button>
+                                <label class="skin-tab file-upload-tab" title="ಅವರ ಫೋಟೋ ಅಪ್ಲೋಡ್ ಮಾಡಿ">
+                                    <span>ಫೋಟೋ ಅಪ್ಲೋಡ್ 📷</span>
+                                    <input type="file" id="custom-face-input" accept="image/*">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Birthday Party Hat Option -->
+                    <div class="party-options">
+                        <label class="party-toggle-label">
+                            <input type="checkbox" id="party-hat-toggle" checked>
+                            <span>ಬರ್ತ್‌ಡೇ ಪಾರ್ಟಿ ಹ್ಯಾಟ್ ಹಾಕಿ 🥳</span>
+                        </label>
+                    </div>
+
+                    <!-- Open Surprise Card Direct Button -->
+                    <button id="btn-open-card-direct" class="btn-surprise-glow">
+                        <span>🎁 ಸರ್ಪ್ರೈಸ್ ಬರ್ತ್‌ಡೇ ಕಾರ್ಡ್ ತೆರೆಯಿರಿ ✨</span>
+                    </button>
+
+                    <!-- Song / Music Selector Bar -->
+                    <div class="song-control-bar">
+                        <div class="song-status-pill">
+                            <span class="music-icon">🎵</span>
+                            <span id="current-song-label">ಬರ್ತ್‌ಡೇ ಪಾರ್ಟಿ ಬೀಟ್</span>
+                        </div>
+                        <label class="btn-song-upload" title="ಅವರ ನೆಚ್ಚಿನ ಕನ್ನಡ ಹಾಡು ಅಥವಾ ಮೆಲೋಡಿ MP3 ಹಾಕಿ">
+                            <span>ಅವರ ನೆಚ್ಚಿನ ಹಾಡು ಹಾಕಿ (MP3) 🎶</span>
+                            <input type="file" id="custom-song-input" accept="audio/*">
+                        </label>
+                    </div>
+
+                    <!-- Best Score Badge -->
+                    <div class="start-stats">
+                        <span class="stat-pill">🏆 ಗರಿಷ್ಠ ದಾಖಲೆ: <b id="menu-best-score">0</b></span>
+                    </div>
+
+                    <!-- Play CTA -->
+                    <button id="btn-start" class="btn-primary pulse-btn">
+                        <span>ಆಟ ಶುರು ಮಾಡಿ! (SPACE) 🎂🚀</span>
+                    </button>
+
+                    <div class="controls-hint">
+                        <span>ಸ್ಕ್ರೀನ್ ಮುಟ್ಟಿ ಅಥವಾ <b>[SPACE]</b> ಕೀ ಒತ್ತಿ ಹಾರಿ!</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Over Screen -->
+            <div id="gameover-screen" class="overlay-layer hidden">
+                <div class="menu-box gameover-box">
+                    <div class="result-badge-container">
+                        <span id="verdict-tag" class="verdict-pill">ಗ್ರಾಂಡ್ ಬರ್ತ್‌ಡೇ ಸೆಲೆಬ್ರೇಷನ್! 🎂</span>
+                        <h2 class="gameover-title">ಆಟ ಮುಗಿಯಿತು</h2>
+                    </div>
+
+                    <!-- Birthday Dialogue Card -->
+                    <div class="quote-card">
+                        <span class="quote-mark">“</span>
+                        <p id="gameover-quote">ಹುಟ್ಟುಹಬ್ಬದ ಹಾರ್ದಿಕ ಶುಭಾಶಯಗಳು! ನಿಮ್ಮ ಮುಖದಲ್ಲಿ ನಗು ಸದಾ ಹೀಗೆಯೇ ಇರಲಿ!</p>
+                    </div>
+
+                    <!-- Scoreboard Grid -->
+                    <div class="scoreboard-grid">
+                        <div class="score-card">
+                            <span class="lbl">ಒಟ್ಟು ಅಂಕ</span>
+                            <span class="val" id="final-score">0</span>
+                        </div>
+                        <div class="score-card highscore-card">
+                            <span class="lbl">ಗರಿಷ್ಠ ಅಂಕ</span>
+                            <span class="val" id="final-best">0</span>
+                            <span id="new-high-badge" class="badge-new hidden">ಹೊಸ ದಾಖಲೆ! ⭐</span>
+                        </div>
+                    </div>
+
+                    <!-- Cakes Collected Stat -->
+                    <div class="cake-stat-row">
+                        <span>🍰 ತಿಂದ ಬರ್ತ್‌ಡೇ ಕೇಕ್‌ಗಳು: <b id="final-cake-count">0</b> (+<span id="final-cake-points">0</span> ಅಂಕಗಳು)</span>
+                    </div>
+
+                    <!-- Birthday Tier Ribbon -->
+                    <div class="tier-card">
+                        <span class="tier-lbl">ಬರ್ತ್‌ಡೇ ರೇಟಿಂಗ್:</span>
+                        <span class="tier-name" id="mass-tier">ಬರ್ತ್‌ಡೇ ಕ್ವೀನ್</span>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="gameover-actions">
+                        <button id="btn-gameover-surprise" class="btn-surprise-glow">
+                            <span>🎁 ನಿಮಗೊಂದು ಸರ್ಪ್ರೈಸ್ ಗಿಫ್ಟ್ ಕಾರ್ಡ್ ಇದೆ! ✨</span>
+                        </button>
+                        <button id="btn-restart" class="btn-primary pulse-btn">
+                            <span>ಮತ್ತೆ ಆಡಿ (REPLAY) 🔄</span>
+                        </button>
+                        <button id="btn-share" class="btn-secondary">
+                            <span>ಬರ್ತ್‌ಡೇ ಸ್ಕೋರ್ ಹಂಚಿಕೊಳ್ಳಿ 📢</span>
+                        </button>
+                    </div>
+
+                    <div class="controls-hint">
+                        <span><b>[SPACE]</b> ಅಥವಾ <b>ಟ್ಯಾಪ್</b> ಮಾಡಿ ತಕ್ಷಣ ಮತ್ತೆ ಆಡಿ</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pause Screen -->
+            <div id="pause-screen" class="overlay-layer hidden">
+                <div class="menu-box">
+                    <h2 class="pause-title">ವಿರಾಮ (PAUSED)</h2>
+                    <p class="pause-sub">ಸ್ವಲ್ಪ ಕೇಕ್ ತಿಂದು ಬನ್ನಿ! 🎂🎈</p>
+                    <button id="btn-resume" class="btn-primary">
+                        <span>ಆಟ ಮುಂದುವರಿಸಿ ▶️</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- SURPRISE BIRTHDAY GREETING CARD MODAL -->
+            <div id="surprise-card-modal" class="overlay-layer hidden">
+                <div class="greeting-card-wrapper">
+                    <div class="card-glass-panel">
+                        <button id="btn-close-card" class="card-close-btn" title="ಮುಚ್ಚಿ">✕</button>
+
+                        <div class="card-sparkles">✨ 💖 ✨</div>
+                        <div class="card-header-badge">HAPPY BIRTHDAY WISH</div>
+
+                        <h2 class="card-title">
+                            Happy Birthday, <br>
+                            <span id="card-her-name" class="calligraphy-name">Princess</span>! 🌸
+                        </h2>
+
+                        <!-- Interactive Candle Blow Section -->
+                        <div class="cake-interactive-box">
+                            <div class="candle-container">
+                                <div id="card-candle-flame" class="candle-flame active"></div>
+                                <div class="candle-body"></div>
+                            </div>
+                            <div class="mini-cake-base">🎂</div>
+                            <button id="btn-blow-candle" class="btn-blow">
+                                <span>💨 ಊದಿ ಮೇಣದಬತ್ತಿ ಆರಿಸಿ (Blow Candle)</span>
+                            </button>
+                            <div id="wish-revealed-text" class="wish-reveal hidden">
+                                ✨ ನಿಮ್ಮ ಎಲ್ಲಾ ಕನಸುಗಳು, ಆಸೆಗಳು ಈಡೇರಲಿ! May all your wishes come true! ✨
+                            </div>
+                        </div>
+
+                        <!-- Emotional Heartfelt Birthday Letter -->
+                        <div class="letter-scroll-box">
+                            <p id="card-letter-body" class="letter-text">
+                                ಹುಟ್ಟುಹಬ್ಬದ ಹಾರ್ದಿಕ ಶುಭಾಶಯಗಳು! 🎂✨<br><br>
+                                ನಮ್ಮ ದಾರಿಗಳು ಬದಲಾಗಿದ್ದರೂ, ನಿನ್ನ ಮುಖದಲ್ಲಿ ಯಾವಾಗಲೂ ಆ ಮುಗ್ಧ ನಗು ಹಾಗೆಯೇ ಇರಲಿ.<br>
+                                ನಿನ್ನ ಜೀವನದಲ್ಲಿ ಎಲ್ಲಾ ಸಂತೋಷ, ನೆಮ್ಮದಿ, ಯಶಸ್ಸು ಮತ್ತು ಉತ್ತಮ ಆರೋಗ್ಯ ಸದಾ ಇರಲಿ ಎಂದು ಹೃದಯಪೂರ್ವಕವಾಗಿ ಹಾರೈಸುತ್ತೇನೆ.<br><br>
+                                Have a truly beautiful and blessed birthday ahead! 💖🌸
+                            </p>
+                        </div>
+
+                        <!-- Music & Share Bar inside Card -->
+                        <div class="card-actions-bar">
+                            <button id="btn-card-music" class="btn-card-action">
+                                <span>🎵 ಬರ್ತ್‌ಡೇ ಟ್ಯೂನ್ ಪ್ಲೇ ಮಾಡಿ</span>
+                            </button>
+                            <button id="btn-card-copy-msg" class="btn-card-action btn-copy-action">
+                                <span>💌 ವಿಶ್ ಕಾಪಿ ಮಾಡಿ (WhatsApp)</span>
+                            </button>
+                        </div>
+
+                        <!-- Secondary Close Button -->
+                        <button id="btn-close-card-bottom" class="btn-close-card-bottom">
+                            <span>✕ ಮುಚ್ಚಿ / ಆಟಕ್ಕೆ ಹಿಂತಿರುಗಿ (Close)</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EDIT SURPRISE CUSTOMIZER MODAL -->
+            <div id="customizer-modal" class="overlay-layer hidden">
+                <div class="menu-box customizer-box">
+                    <h3 class="customizer-title">ಸರ್ಪ್ರೈಸ್ ಕಸ್ಟಮೈಸ್ ಮಾಡಿ ✏️</h3>
+                    <p class="customizer-sub">ಅವರ ಹೆಸರು ಮತ್ತು ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಸಂದೇಶವನ್ನು ಇಲ್ಲಿ ಬರೆಯಿರಿ:</p>
+
+                    <div class="input-field-group">
+                        <label for="input-her-name">ಅವರ ಹೆಸರು (Her Name / Nickname):</label>
+                        <input type="text" id="input-her-name" placeholder="ಉದಾ: Kavya, Sneha, Queen..." maxlength="30">
+                    </div>
+
+                    <div class="input-field-group">
+                        <label for="input-letter-msg">ನಿಮ್ಮ ಹಾರೈಕೆ ಸಂದೇಶ (Your Birthday Message):</label>
+                        <textarea id="input-letter-msg" rows="5" placeholder="ನಿಮ್ಮ ಮುದ್ದಾದ ಸಂದೇಶವನ್ನು ಇಲ್ಲಿ ಬರೆಯಿರಿ..."></textarea>
+                    </div>
+
+                    <div class="customizer-buttons">
+                        <button id="btn-save-surprise" class="btn-primary">
+                            <span>ಉಳಿಸಿ & ಕಾರ್ಡ್ ನೋಡಿ (Save & Preview) ✨</span>
+                        </button>
+                        <button id="btn-cancel-surprise" class="btn-secondary">
+                            <span>ರದ್ದು (Cancel)</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="game-footer">
+            <p>ಹುಟ್ಟುಹಬ್ಬದ ಶುಭಾಶಯಗಳೊಂದಿಗೆ ಪ್ರೀತಿಯಿಂದ ಅರ್ಪಣೆ ❤️ | ಕಂಟ್ರೋಲ್ಸ್: [SPACE / ಟ್ಯಾಪ್] ಜಂಪ್ • [M] ಸೌಂಡ್ • [P] ಪಾಸ್</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="audio.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
