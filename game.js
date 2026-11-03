@@ -110,8 +110,12 @@ Have a truly beautiful, blessed, and wonderful birthday ahead! 💖🌸`;
     let highScore = parseInt(localStorage.getItem('kannada_flying_birthday_best') || '0', 10);
     if (menuBestScore) menuBestScore.textContent = highScore;
 
-    let selectedSkin = 'queen'; // Default Birthday Queen
-    let customImage = null;
+    let selectedSkin = 'custom'; // Default to custom photo
+    let customImage = new Image();
+    customImage.src = 'face.png';
+    customImage.onload = () => {
+        if (typeof drawPreview === 'function') drawPreview();
+    };
     let showPartyHat = true;
 
     if (partyHatToggle) {
@@ -219,7 +223,7 @@ Have a truly beautiful, blessed, and wonderful birthday ahead! 💖🌸`;
             // 1. Wings / Cape
             targetCtx.save();
             const flapOffset = Math.sin(this.frame * 2.5) * 8;
-            if (selectedSkin === 'queen') {
+            if (selectedSkin === 'queen' || selectedSkin === 'custom') {
                 targetCtx.fillStyle = 'rgba(255, 107, 129, 0.75)';
                 targetCtx.beginPath();
                 targetCtx.ellipse(-24, flapOffset - 4, 18, 10, -0.3, 0, Math.PI * 2);
@@ -240,7 +244,7 @@ Have a truly beautiful, blessed, and wonderful birthday ahead! 💖🌸`;
 
             // 2. Aura
             targetCtx.save();
-            targetCtx.shadowColor = (selectedSkin === 'queen') ? 'rgba(224, 86, 253, 0.7)' : 'rgba(255, 204, 0, 0.55)';
+            targetCtx.shadowColor = (selectedSkin === 'queen' || selectedSkin === 'custom') ? 'rgba(224, 86, 253, 0.7)' : 'rgba(255, 204, 0, 0.55)';
             targetCtx.shadowBlur = 14;
             targetCtx.beginPath();
             targetCtx.arc(0, 0, this.radius + 2, 0, Math.PI * 2);
