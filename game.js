@@ -112,10 +112,16 @@ Have a truly beautiful, blessed, and wonderful birthday ahead! 💖🌸`;
 
     let selectedSkin = 'custom'; // Default to custom photo
     let customImage = new Image();
-    customImage.src = 'face.png';
     customImage.onload = () => {
         if (typeof drawPreview === 'function') drawPreview();
     };
+    customImage.onerror = () => {
+        // Fallback to face.png if face.jpg is not found
+        if (!customImage.src.endsWith('face.png')) {
+            customImage.src = 'face.png';
+        }
+    };
+    customImage.src = 'face.jpg';
     let showPartyHat = true;
 
     if (partyHatToggle) {
