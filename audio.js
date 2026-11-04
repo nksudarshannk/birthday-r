@@ -227,7 +227,8 @@ class KannadaSoundController {
     }
 
     // Candle Blow Sound
-    playCandleBlow() {
+    // Candle Blow Sound (followed by full Birthday Song for Rohini)
+    playCandleBlow(name = 'Rohini') {
         if (!this.enabled) return;
         this.init();
         if (!this.ctx) return;
@@ -250,8 +251,8 @@ class KannadaSoundController {
         puffNoise.start(now);
 
         setTimeout(() => {
-            this.playBirthdayFanfare();
-        }, 150);
+            this.playHappyBirthdaySong(name);
+        }, 180);
     }
 
     // Obstacle Crash Sound
@@ -296,33 +297,69 @@ class KannadaSoundController {
         glassNoise.start(now);
     }
 
-    // Happy Birthday Fanfare
-    playBirthdayFanfare() {
+    // Full Happy Birthday Song for Rohini (Melody + Climax Name Line)
+    playHappyBirthdaySong(name = 'Rohini') {
         if (!this.enabled) return;
         this.init();
         if (!this.ctx) return;
 
+        // Clean name (default to Rohini)
+        const cleanName = (name && typeof name === 'string') ? name.replace(/[^\w\s]/gi, '').trim() || 'Rohini' : 'Rohini';
+
+        // Full 4-Line Traditional Birthday Rhyme Song
+        // Line 1: Hap-py Birth-day to you
+        // Line 2: Hap-py Birth-day to you
+        // Line 3: Hap-py Birth-day dear Ro-hi-ni
+        // Line 4: Hap-py Birth-day to you
         const notes = [
-            { f: 261.63, d: 0.25 },
-            { f: 261.63, d: 0.20 },
-            { f: 293.66, d: 0.45 },
-            { f: 261.63, d: 0.45 },
-            { f: 349.23, d: 0.45 },
-            { f: 329.63, d: 0.85 }
+            // Line 1
+            { f: 261.63, d: 0.32 },
+            { f: 261.63, d: 0.22 },
+            { f: 293.66, d: 0.54 },
+            { f: 261.63, d: 0.54 },
+            { f: 349.23, d: 0.54 },
+            { f: 329.63, d: 0.88 },
+
+            // Line 2
+            { f: 261.63, d: 0.32 },
+            { f: 261.63, d: 0.22 },
+            { f: 293.66, d: 0.54 },
+            { f: 261.63, d: 0.54 },
+            { f: 392.00, d: 0.54 },
+            { f: 349.23, d: 0.88 },
+
+            // Line 3: Climax - Happy Birthday dear Rohini!
+            { f: 261.63, d: 0.32 },
+            { f: 261.63, d: 0.22 },
+            { f: 523.25, d: 0.58 }, // High C5
+            { f: 440.00, d: 0.58 }, // A4
+            { f: 349.23, d: 0.58 }, // F4
+            { f: 329.63, d: 0.54 }, // E4
+            { f: 293.66, d: 0.92 }, // D4 (Rohini!)
+
+            // Line 4: Finale
+            { f: 466.16, d: 0.32 }, // Bb4
+            { f: 466.16, d: 0.22 },
+            { f: 440.00, d: 0.58 }, // A4
+            { f: 349.23, d: 0.58 }, // F4
+            { f: 392.00, d: 0.58 }, // G4
+            { f: 349.23, d: 1.25 }  // F4
         ];
 
         let offset = 0;
         const now = this.ctx.currentTime;
 
-        notes.forEach(note => {
+        notes.forEach((note, idx) => {
             const osc = this.ctx.createOscillator();
             const gain = this.ctx.createGain();
 
-            osc.type = 'triangle';
-            osc.frequency.setValueAtTime(note.f * 1.5, now + offset);
+            // Rich warm music box tone (Sine + Soft Triangle harmonic)
+            osc.type = (idx >= 12 && idx <= 18) ? 'triangle' : 'sine';
+            osc.frequency.setValueAtTime(note.f, now + offset);
 
-            gain.gain.setValueAtTime(0.2, now + offset);
-            gain.gain.exponentialRampToValueAtTime(0.001, now + offset + note.d);
+            const vol = (idx >= 12 && idx <= 18) ? 0.28 : 0.20;
+            gain.gain.setValueAtTime(vol, now + offset);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + offset + note.d * 0.92);
 
             osc.connect(gain);
             gain.connect(this.ctx.destination);
@@ -330,52 +367,37 @@ class KannadaSoundController {
             osc.start(now + offset);
             osc.stop(now + offset + note.d + 0.05);
 
-            offset += note.d * 0.95;
+            // Shimmer chime harmonic overtone
+            const chime = this.ctx.createOscillator();
+            const chimeGain = this.ctx.createGain();
+            chime.type = 'sine';
+            chime.frequency.setValueAtTime(note.f * 2, now + offset);
+            chimeGain.gain.setValueAtTime(0.06, now + offset);
+            chimeGain.gain.exponentialRampToValueAtTime(0.001, now + offset + note.d * 0.6);
+            chime.connect(chimeGain);
+            chimeGain.connect(this.ctx.destination);
+            chime.start(now + offset);
+            chime.stop(now + offset + note.d + 0.05);
+
+            // When reaching Line 3 ("Happy Birthday dear Rohini"), speak Rohini's name clearly!
+            if (idx === 14) {
+                setTimeout(() => {
+                    this.speakKannada(`Happy Birthday dear ${cleanName}!`);
+                }, offset * 1000);
+            }
+
+            offset += note.d * 0.90;
         });
     }
 
+    // Happy Birthday Fanfare (calls full song)
+    playBirthdayFanfare(name = 'Rohini') {
+        this.playHappyBirthdaySong(name);
+    }
+
     // Sweet Music Box Acoustic Mode
-    playMusicBoxMelody() {
-        if (!this.enabled) return;
-        this.init();
-        if (!this.ctx) return;
-
-        const melody = [
-            { f: 261.63, d: 0.3 },
-            { f: 261.63, d: 0.3 },
-            { f: 293.66, d: 0.6 },
-            { f: 261.63, d: 0.6 },
-            { f: 349.23, d: 0.6 },
-            { f: 329.63, d: 1.0 },
-            { f: 261.63, d: 0.3 },
-            { f: 261.63, d: 0.3 },
-            { f: 293.66, d: 0.6 },
-            { f: 261.63, d: 0.6 },
-            { f: 392.00, d: 0.6 },
-            { f: 349.23, d: 1.2 }
-        ];
-
-        let t = 0;
-        const now = this.ctx.currentTime;
-
-        melody.forEach(n => {
-            const osc = this.ctx.createOscillator();
-            const gain = this.ctx.createGain();
-
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(n.f * 2, now + t);
-
-            gain.gain.setValueAtTime(0.18, now + t);
-            gain.gain.exponentialRampToValueAtTime(0.001, now + t + n.d * 0.9);
-
-            osc.connect(gain);
-            gain.connect(this.ctx.destination);
-
-            osc.start(now + t);
-            osc.stop(now + t + n.d);
-
-            t += n.d * 0.85;
-        });
+    playMusicBoxMelody(name = 'Rohini') {
+        this.playHappyBirthdaySong(name);
     }
 
     // Party Mass Beat Engine

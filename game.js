@@ -57,6 +57,7 @@
     const wishRevealedText = document.getElementById('wish-revealed-text');
     const btnCardMusic = document.getElementById('btn-card-music');
     const btnCardCopyMsg = document.getElementById('btn-card-copy-msg');
+    const btnCardPlayGame = document.getElementById('btn-card-play-game');
 
     // Customizer Modal Elements
     const inputHerName = document.getElementById('input-her-name');
@@ -146,14 +147,14 @@ Have a truly beautiful, blessed, and wonderful birthday ahead! 💖🌸`;
 
     // ONLY PURE HAPPY BIRTHDAY DIALOGUES
     const BIRTHDAY_DIALOGUES = [
-        "ಹುಟ್ಟುಹಬ್ಬದ ಹಾರ್ದಿಕ ಶುಭಾಶಯಗಳು! 🎂🎉",
-        "Happy Birthday! May your day be blessed! 🌸✨",
-        "ಸರ್ಪ್ರೈಸ್ ಗಿಫ್ಟ್ ಹಿಡಿಯಿರಿ! 🎁💖",
-        "ಸದಾ ನಗುನಗುತ್ತಾ ಖುಷಿಯಾಗಿರಿ! 🌸",
-        "ಇಂದು ನಿಮ್ಮದೇ ವಿಶೇಷ ದಿನ! 👑🎂",
-        "ಜೈ ಕರ್ನಾಟಕ! ಹ್ಯಾಪಿ ಬರ್ತ್‌ಡೇ! 💛❤️",
-        "Wishing you joy, love & happiness! ✨🎂",
-        "ನಿಮ್ಮ ಎಲ್ಲಾ ಕನಸುಗಳು ಈಡೇರಲಿ! 🌟"
+        "ಹುಟ್ಟುಹಬ್ಬದ ಹಾರ್ದಿಕ ಶುಭಾಶಯಗಳು ರೋಹಿಣಿ! 🎂👑",
+        "Happy Birthday Princess Rohini! 🌸✨",
+        "ಸರ್ಪ್ರೈಸ್ ಗಿಫ್ಟ್ ಹಿಡಿಯಿರಿ ರೋಹಿಣಿ! 🎁💖",
+        "ಸದಾ ನಗುನಗುತ್ತಾ ಖುಷಿಯಾಗಿರಿ ರೋಹಿಣಿ! 🌸",
+        "ಇಂದು ರೋಹಿಣಿ ಅವರ ವಿಶೇಷ ದಿನ! 👑🎂",
+        "ಜೈ ಕರ್ನಾಟಕ! ಹ್ಯಾಪಿ ಬರ್ತ್‌ಡೇ ರೋಹಿಣಿ! 💛❤️",
+        "Wishing you all joy & love, Rohini! ✨🎂",
+        "ನಿಮ್ಮ ಎಲ್ಲಾ ಕನಸುಗಳು ಈಡೇರಲಿ ರೋಹಿಣಿ! 🌟"
     ];
 
     const GAMEOVER_QUOTES = [
@@ -1260,15 +1261,18 @@ Have a truly beautiful, blessed, and wonderful birthday ahead! 💖🌸`;
         surpriseCardModal.classList.remove('active');
         surpriseCardModal.classList.add('hidden');
 
-        if (openedFromState === STATES.PLAYING) {
+        if (openedFromState === STATES.PLAYING || openedFromState === STATES.PAUSED) {
             gameState = STATES.PLAYING;
             window.kannadaSound.startBGM();
-        } else if (openedFromState === STATES.MENU) {
-            startScreen.classList.remove('hidden');
-            startScreen.classList.add('active');
         } else if (openedFromState === STATES.GAMEOVER) {
+            gameState = STATES.GAMEOVER;
             gameoverScreen.classList.remove('hidden');
             gameoverScreen.classList.add('active');
+        } else {
+            // Default to Menu (Normal State)
+            gameState = STATES.MENU;
+            startScreen.classList.remove('hidden');
+            startScreen.classList.add('active');
         }
     }
 
@@ -1501,7 +1505,7 @@ Have a truly beautiful, blessed, and wonderful birthday ahead! 💖🌸`;
             wishRevealedText.innerHTML = `✨ Happy Birthday ${herName}! 🎂👑<br><span style="font-size: 0.9em; color: #ffeaa7;">May all your dreams and wishes come true! ನಿಮ್ಮ ಎಲ್ಲಾ ಕನಸುಗಳು, ಆಸೆಗಳು ಈಡೇರಲಿ! ✨</span>`;
             wishRevealedText.classList.remove('hidden');
         }
-        window.kannadaSound.playCandleBlow();
+        window.kannadaSound.playCandleBlow(herName);
 
         for (let i = 0; i < 40; i++) {
             particles.push(new Particle(
@@ -1520,8 +1524,17 @@ Have a truly beautiful, blessed, and wonderful birthday ahead! 💖🌸`;
     // Play Birthday Tune from Card
     btnCardMusic.addEventListener('click', (e) => {
         e.stopPropagation();
-        window.kannadaSound.playMusicBoxMelody();
+        window.kannadaSound.playMusicBoxMelody(herName);
     });
+
+    // Direct Play Normal Game from Surprise Card
+    if (btnCardPlayGame) {
+        btnCardPlayGame.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeSurpriseCard();
+            startGame();
+        });
+    }
 
     // Copy Wish for WhatsApp
     btnCardCopyMsg.addEventListener('click', (e) => {
