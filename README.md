@@ -51,3 +51,4 @@ npx vercel
 
 - [**`run.bat`**](file:///C:/Users/Sudharshan%20N%20K/.gemini/antigravity/scratch/flying-balayya/run.bat) ಮೇಲೆ ಡಬಲ್-ಕ್ಲಿಕ್ ಮಾಡಿ.
 - ಅಥವಾ ಒಂದೇ ವೈ-ಫೈ ನೆಟ್‌ವರ್ಕ್‌ನಲ್ಲಿ ಮೊಬೈಲ್‌ನಲ್ಲೂ ಟೆಸ್ಟ್ ಮಾಡಲು [**`start_server.bat`**](file:///C:/Users/Sudharshan%20N%20K/.gemini/antigravity/scratch/flying-balayya/start_server.bat) ಡಬಲ್-ಕ್ಲಿಕ್ ಮಾಡಿ.
+"# birthday-r" 
