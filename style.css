@@ -77,8 +77,9 @@ body {
 #canvas-container {
     position: relative;
     width: 100%;
+    max-width: 480px;
     aspect-ratio: 480 / 720;
-    max-height: 88vh;
+    max-height: min(86vh, calc(100dvh - 65px));
     border-radius: 20px;
     box-shadow: 0 16px 45px rgba(0, 0, 0, 0.85),
                 0 0 25px rgba(243, 156, 18, 0.4),
@@ -337,10 +338,15 @@ body {
 /* Menu Boxes */
 .menu-box {
     margin: auto;
-    width: 90%;
+    width: 92%;
+    max-height: 96%;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     background: var(--panel-bg);
     border-radius: 20px;
-    padding: 18px 14px;
+    padding: 14px 12px;
     text-align: center;
     border: 2px solid var(--border-gold);
     box-shadow: 0 14px 40px rgba(0, 0, 0, 0.95),
@@ -350,7 +356,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
+}
+
+.menu-box::-webkit-scrollbar {
+    display: none;
 }
 
 .sub-badge {
@@ -1199,18 +1209,62 @@ body {
     line-height: 1.4;
 }
 
-@media (max-width: 500px) {
+/* Highly Responsive Mobile & Small Screen Optimization */
+@media (max-width: 500px), (max-height: 820px) {
+    body {
+        padding: 0;
+        justify-content: flex-start;
+    }
     #game-wrapper {
-        padding: 4px;
+        padding: 2px 4px;
+        max-width: 440px;
+    }
+    .karnataka-banner {
+        margin-bottom: 2px;
+        gap: 6px;
+    }
+    .banner-title {
+        font-size: 0.68rem;
     }
     #canvas-container {
         border-radius: 14px;
+        max-height: calc(100dvh - 46px);
     }
-    .word-kannada { font-size: 2rem; }
-    .word-english { font-size: 1.15rem; }
+    .game-footer {
+        display: none; /* Hide footer on mobile screens to give 100% space to the game */
+    }
+    .word-kannada { font-size: 1.8rem; }
+    .word-english { font-size: 1.05rem; }
+    .tagline { font-size: 0.72rem; margin: 0; }
+    .name-badge-bar { padding: 3px 10px; font-size: 0.72rem; }
+    .name-highlight { font-size: 0.82rem; }
     .score-display { font-size: 2.6rem; }
-    .menu-box { width: 94%; padding: 14px 10px; gap: 7px; }
-    .card-title { font-size: 1.15rem; }
-    .calligraphy-name { font-size: 2.3rem; }
-    .card-close-btn { width: 36px; height: 36px; top: 8px; right: 10px; }
+    .menu-box { width: 95%; padding: 10px 8px; gap: 4px; }
+    .avatar-glow { width: 58px; height: 58px; }
+    .avatar-glow canvas { width: 52px; height: 52px; }
+    .character-preview-card { padding: 4px 6px; gap: 3px; }
+    .select-label { font-size: 0.66rem; }
+    .skin-tabs { gap: 3px; }
+    .skin-tab { padding: 3px 7px; font-size: 0.66rem; }
+    .party-toggle-label { padding: 2px 8px; font-size: 0.68rem; }
+    .btn-surprise-glow { padding: 7px 14px; font-size: 0.82rem; }
+    .song-control-bar { gap: 2px; }
+    .song-status-pill { padding: 2px 8px; font-size: 0.66rem; }
+    .btn-song-upload { padding: 2px 8px; font-size: 0.66rem; }
+    .stat-pill { padding: 2px 8px; font-size: 0.72rem; }
+    .btn-primary { padding: 9px 18px; font-size: 1.02rem; }
+    .controls-hint { font-size: 0.66rem; margin-top: 2px; }
+    .card-title { font-size: 1.1rem; }
+    .calligraphy-name { font-size: 2.1rem; }
+    .letter-scroll-box { max-height: 110px; padding: 8px 10px; }
+    .letter-text { font-size: 0.78rem; }
+    .card-close-btn { width: 34px; height: 34px; top: 6px; right: 8px; }
+}
+
+@media (max-height: 680px) {
+    .character-preview-card {
+        display: none; /* Auto-hide preview on extremely short phone screens so play button is always front & center */
+    }
+    .word-kannada { font-size: 1.5rem; }
+    .word-english { font-size: 0.95rem; }
 }
