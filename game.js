@@ -72,7 +72,12 @@
 
 Have a truly beautiful, blessed, and wonderful birthday ahead! 💖🌸`;
 
-    let herName = localStorage.getItem('kannada_surprise_her_name') || 'Princess';
+    let savedName = localStorage.getItem('kannada_surprise_her_name');
+    if (!savedName || savedName === 'Princess' || savedName === 'Birthday Queen') {
+        savedName = 'Princess Rohini';
+        localStorage.setItem('kannada_surprise_her_name', savedName);
+    }
+    let herName = savedName;
     let herLetter = localStorage.getItem('kannada_surprise_her_letter') || DEFAULT_LETTER;
 
     function updateSurpriseDisplay() {
@@ -81,6 +86,9 @@ Have a truly beautiful, blessed, and wonderful birthday ahead! 💖🌸`;
         if (cardLetterBody) cardLetterBody.textContent = herLetter;
         if (inputHerName) inputHerName.value = herName;
         if (inputLetterMsg) inputLetterMsg.value = herLetter;
+        if (wishRevealedText) {
+            wishRevealedText.innerHTML = `✨ Happy Birthday ${herName}! 🎂👑<br><span style="font-size: 0.9em; color: #ffeaa7;">May all your dreams and wishes come true! ನಿಮ್ಮ ಎಲ್ಲಾ ಕನಸುಗಳು, ಆಸೆಗಳು ಈಡೇರಲಿ! ✨</span>`;
+        }
     }
     updateSurpriseDisplay();
 
@@ -120,7 +128,7 @@ Have a truly beautiful, blessed, and wonderful birthday ahead! 💖🌸`;
         if (customImage.src.endsWith('face.jpeg')) {
             customImage.src = 'face.jpg';
         } else if (customImage.src.endsWith('face.jpg')) {
-            customImage.src = 'face.png';
+            customImage.src = 'face.jpeg';
         }
     };
     customImage.src = 'face.jpeg';
@@ -536,137 +544,309 @@ Have a truly beautiful, blessed, and wonderful birthday ahead! 💖🌸`;
             }
         }
 
-        // Amber Bottle Visual
+        // Authentic Realistic Power Cool Label with Rohini Tribute (Modeled on Real Bottle Photo)
+        drawPowerCoolLabel(tCtx, cx, cy, isFlipped = false) {
+            tCtx.save();
+            tCtx.translate(cx, cy);
+
+            const lw = 58;
+            const lh = 68;
+            const lx = -lw / 2;
+            const ly = -lh / 2;
+
+            // 1. Label Silhouette: Cream/White Badge with top arch cutout & curved bracket bottom
+            tCtx.fillStyle = '#fffef8';
+            tCtx.beginPath();
+            tCtx.moveTo(lx + 8, ly);
+            // Top cutout for Medallion
+            tCtx.arc(0, ly, 10, Math.PI, 0, true);
+            tCtx.lineTo(lx + lw - 8, ly);
+            tCtx.quadraticCurveTo(lx + lw, ly, lx + lw, ly + 8);
+            tCtx.lineTo(lx + lw, ly + lh - 8);
+            tCtx.quadraticCurveTo(lx + lw, ly + lh, lx + lw - 8, ly + lh);
+            tCtx.lineTo(lx + 8, ly + lh);
+            tCtx.quadraticCurveTo(lx, ly + lh, lx, ly + lh - 8);
+            tCtx.lineTo(lx, ly + 8);
+            tCtx.quadraticCurveTo(lx, ly, lx + 8, ly);
+            tCtx.closePath();
+            tCtx.fill();
+
+            // Double Gold & Crimson Border
+            tCtx.strokeStyle = '#d4a233';
+            tCtx.lineWidth = 2.5;
+            tCtx.stroke();
+
+            tCtx.strokeStyle = '#7a0a1a';
+            tCtx.lineWidth = 1;
+            tCtx.stroke();
+
+            // 2. Medallion Crest on Top (Exact from photo)
+            tCtx.fillStyle = '#d4a233';
+            tCtx.beginPath();
+            tCtx.arc(0, ly, 9.5, 0, Math.PI * 2);
+            tCtx.fill();
+
+            tCtx.fillStyle = '#b32424';
+            tCtx.beginPath();
+            tCtx.arc(0, ly, 7, 0, Math.PI * 2);
+            tCtx.fill();
+
+            tCtx.fillStyle = '#ffffff';
+            tCtx.font = 'bold 7px sans-serif';
+            tCtx.textAlign = 'center';
+            tCtx.fillText('★', 0, ly + 2.5);
+
+            // 3. Arched "650 ml" Gold Text
+            tCtx.fillStyle = '#8f6815';
+            tCtx.font = 'bold 5px Montserrat, sans-serif';
+            tCtx.textAlign = 'center';
+            tCtx.fillText('650 ml', 0, ly + 14);
+
+            // 4. POWER COOL Bold Crimson Banner
+            const bannerW = lw - 6;
+            const bannerH = 22;
+            const bannerX = -bannerW / 2;
+            const bannerY = ly + 16;
+
+            tCtx.fillStyle = '#7a0a1a';
+            tCtx.beginPath();
+            tCtx.roundRect(bannerX, bannerY, bannerW, bannerH, 4);
+            tCtx.fill();
+
+            tCtx.strokeStyle = '#f3ca65';
+            tCtx.lineWidth = 1.2;
+            tCtx.stroke();
+
+            // "POWER COOL" Text
+            tCtx.fillStyle = '#ffffff';
+            tCtx.font = '900 8px Montserrat, Arial, sans-serif';
+            tCtx.textAlign = 'center';
+            tCtx.fillText('POWER COOL', 0, bannerY + 10);
+
+            // "STRONG BEER"
+            tCtx.fillStyle = '#fce49f';
+            tCtx.font = '700 5px Montserrat, sans-serif';
+            tCtx.fillText('STRONG BEER', 0, bannerY + 18);
+
+            // 5. Special "ROHINI" Bold Gold Tribute Badge!
+            const rohiniY = bannerY + bannerH + 3;
+            tCtx.fillStyle = '#1c0b02';
+            tCtx.beginPath();
+            tCtx.roundRect(-25, rohiniY, 50, 13, 3);
+            tCtx.fill();
+
+            tCtx.strokeStyle = '#ffd700';
+            tCtx.lineWidth = 1.2;
+            tCtx.stroke();
+
+            tCtx.fillStyle = '#ffd700';
+            tCtx.font = '900 7.5px Montserrat, Arial, sans-serif';
+            tCtx.textAlign = 'center';
+            tCtx.fillText('★ ROHINI ★', 0, rohiniY + 9.5);
+
+            // 6. Kannada Statutory Warning Strip at bottom
+            const warnY = ly + lh - 10;
+            tCtx.fillStyle = '#fad02c';
+            tCtx.fillRect(lx + 4, warnY, lw - 8, 8);
+            tCtx.fillStyle = '#111111';
+            tCtx.font = 'bold 4.5px "Anek Kannada", sans-serif';
+            tCtx.textAlign = 'center';
+            tCtx.fillText('ಮದ್ಯಪಾನ ಹಾನಿಕರ • ROHINI', 0, warnY + 6);
+
+            tCtx.restore();
+        }
+
+        // Realistic Amber Glass Power Cool Bottle Visual
         drawBottle(tCtx, x, y, w, isInverted, customHeight) {
             tCtx.save();
-            const neckW = w * 0.38;
-            const neckH = 50;
+            const neckW = 24;
+            const capW = 28;
+            const capH = 12;
 
+            // Rich Amber Glass Gradient (based on real bottle photo)
             const glassGrad = tCtx.createLinearGradient(x, 0, x + w, 0);
-            glassGrad.addColorStop(0, '#2d1405');
-            glassGrad.addColorStop(0.25, '#5d2b0a');
-            glassGrad.addColorStop(0.65, '#9e4b10');
-            glassGrad.addColorStop(0.85, '#d4771e');
-            glassGrad.addColorStop(1, '#251004');
+            glassGrad.addColorStop(0, '#1c0b02');
+            glassGrad.addColorStop(0.12, '#3b1806');
+            glassGrad.addColorStop(0.38, '#8c3c0a');
+            glassGrad.addColorStop(0.65, '#c76618');
+            glassGrad.addColorStop(0.82, '#e8882d');
+            glassGrad.addColorStop(0.92, '#5e2508');
+            glassGrad.addColorStop(1.0, '#180902');
 
+            // Metallic Gold Foil Gradient
             const foilGrad = tCtx.createLinearGradient(x, 0, x + w, 0);
-            foilGrad.addColorStop(0, '#936d1b');
-            foilGrad.addColorStop(0.3, '#dfad3b');
-            foilGrad.addColorStop(0.7, '#f7d268');
-            foilGrad.addColorStop(1, '#876114');
+            foilGrad.addColorStop(0, '#7a540f');
+            foilGrad.addColorStop(0.22, '#d4a233');
+            foilGrad.addColorStop(0.52, '#fced85');
+            foilGrad.addColorStop(0.78, '#d4a233');
+            foilGrad.addColorStop(1, '#664508');
 
             if (isInverted) {
-                const bodyH = y - neckH;
+                // Hanging bottle from ceiling (0 down to y)
+                const bodyBottomY = y - 82;
+                const neckTopY = y - 48;
+                const capY = y - capH;
 
-                tCtx.fillStyle = glassGrad;
-                tCtx.fillRect(x, 0, w, bodyH);
+                // 1. Cap
+                tCtx.fillStyle = foilGrad;
+                tCtx.fillRect(x + (w - capW) / 2, capY, capW, capH);
+                tCtx.strokeStyle = '#4a3000';
+                tCtx.lineWidth = 1;
+                tCtx.strokeRect(x + (w - capW) / 2, capY, capW, capH);
 
+                // Black pull ring loop at the tip (y)
+                tCtx.strokeStyle = '#111';
+                tCtx.lineWidth = 2.5;
                 tCtx.beginPath();
-                tCtx.moveTo(x, bodyH);
-                tCtx.lineTo(x + (w - neckW) / 2, bodyH + 18);
-                tCtx.lineTo(x + (w + neckW) / 2, bodyH + 18);
-                tCtx.lineTo(x + w, bodyH);
+                tCtx.arc(x + w / 2, y + 4, 3.5, 0, Math.PI * 2);
+                tCtx.stroke();
+
+                // 2. Neck with Gold Foil
+                tCtx.fillStyle = foilGrad;
+                tCtx.fillRect(x + (w - neckW) / 2, neckTopY, neckW, capY - neckTopY);
+
+                // Neck label: POWER COOL
+                tCtx.fillStyle = '#7a0a1a';
+                tCtx.fillRect(x + (w - neckW) / 2 + 2, neckTopY + 8, neckW - 4, 11);
+                tCtx.fillStyle = '#ffffff';
+                tCtx.font = 'bold 4.5px sans-serif';
+                tCtx.textAlign = 'center';
+                tCtx.fillText('POWER', x + w / 2, neckTopY + 13);
+                tCtx.fillText('COOL', x + w / 2, neckTopY + 17.5);
+
+                // 3. Smooth Curved Shoulder tapering into neck
+                tCtx.fillStyle = glassGrad;
+                tCtx.beginPath();
+                tCtx.moveTo(x, bodyBottomY);
+                tCtx.bezierCurveTo(
+                    x, bodyBottomY + 16,
+                    x + (w - neckW) / 2, neckTopY - 14,
+                    x + (w - neckW) / 2, neckTopY
+                );
+                tCtx.lineTo(x + (w + neckW) / 2, neckTopY);
+                tCtx.bezierCurveTo(
+                    x + (w + neckW) / 2, neckTopY - 14,
+                    x + w, bodyBottomY + 16,
+                    x + w, bodyBottomY
+                );
                 tCtx.closePath();
                 tCtx.fill();
 
-                tCtx.fillStyle = foilGrad;
-                tCtx.fillRect(x + (w - neckW) / 2, bodyH + 12, neckW, neckH - 12);
-
-                tCtx.fillStyle = '#dfad3b';
-                tCtx.fillRect(x + (w - neckW) / 2 - 2, y - 10, neckW + 4, 10);
-                tCtx.strokeStyle = '#5a3d00';
-                tCtx.lineWidth = 1;
-                tCtx.strokeRect(x + (w - neckW) / 2 - 2, y - 10, neckW + 4, 10);
-
-                tCtx.strokeStyle = '#111';
-                tCtx.lineWidth = 2;
+                // Embossed glass arch ridge
+                tCtx.strokeStyle = 'rgba(255, 200, 100, 0.4)';
+                tCtx.lineWidth = 1.5;
                 tCtx.beginPath();
-                tCtx.arc(x + w / 2, y - 13, 3.5, 0, Math.PI * 2);
+                tCtx.arc(x + w / 2, bodyBottomY + 4, 22, Math.PI * 1.15, Math.PI * 1.85);
                 tCtx.stroke();
 
-                if (bodyH > 80) {
-                    const labelY = bodyH - 75;
-                    const labelW = w - 10;
-                    const labelH = 55;
+                // 4. Cylindrical Body
+                if (bodyBottomY > 0) {
+                    tCtx.fillStyle = glassGrad;
+                    tCtx.fillRect(x, 0, w, bodyBottomY);
 
-                    tCtx.fillStyle = '#fffdf7';
-                    tCtx.beginPath();
-                    tCtx.roundRect(x + 5, labelY, labelW, labelH, 6);
-                    tCtx.fill();
-                    tCtx.strokeStyle = '#dfad3b';
+                    // Embossed glass base ring at ceiling
+                    tCtx.strokeStyle = 'rgba(30, 10, 2, 0.6)';
                     tCtx.lineWidth = 2;
-                    tCtx.stroke();
+                    tCtx.strokeRect(x + 2, 6, w - 4, 2);
 
-                    tCtx.fillStyle = '#800c1c';
-                    tCtx.beginPath();
-                    tCtx.roundRect(x + 8, labelY + 14, labelW - 6, 24, 3);
-                    tCtx.fill();
-
-                    tCtx.fillStyle = '#ffffff';
-                    tCtx.font = 'bold 7px Montserrat, sans-serif';
-                    tCtx.textAlign = 'center';
-                    tCtx.fillText('★ SPECIAL ★', x + w / 2, labelY + 28);
+                    // Main Power Cool & Rohini Label
+                    if (bodyBottomY > 75) {
+                        this.drawPowerCoolLabel(tCtx, x + w / 2, bodyBottomY - 44, false);
+                    }
                 }
 
-                tCtx.fillStyle = 'rgba(255, 255, 255, 0.32)';
-                tCtx.fillRect(x + 7, 0, 4, bodyH + 12);
+                // Vertical Specular Glass Highlight down the bottle
+                const shineGrad = tCtx.createLinearGradient(x + 10, 0, x + 20, 0);
+                shineGrad.addColorStop(0, 'rgba(255, 255, 255, 0)');
+                shineGrad.addColorStop(0.5, 'rgba(255, 255, 255, 0.38)');
+                shineGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                tCtx.fillStyle = shineGrad;
+                tCtx.fillRect(x + 10, 0, 8, y - capH);
 
             } else {
-                const bodyY = y + neckH;
-                const bodyH = customHeight - neckH;
+                // Standing bottle from ground (y down to y + customHeight)
+                const bodyY = y + 82;
+                const neckTopY = y + capH;
+                const neckEndY = y + 48;
 
-                tCtx.fillStyle = '#dfad3b';
-                tCtx.fillRect(x + (w - neckW) / 2 - 2, y, neckW + 4, 10);
-                tCtx.strokeStyle = '#5a3d00';
+                // 1. Cap
+                tCtx.fillStyle = foilGrad;
+                tCtx.fillRect(x + (w - capW) / 2, y, capW, capH);
+                tCtx.strokeStyle = '#4a3000';
                 tCtx.lineWidth = 1;
-                tCtx.strokeRect(x + (w - neckW) / 2 - 2, y, neckW + 4, 10);
+                tCtx.strokeRect(x + (w - capW) / 2, y, capW, capH);
 
+                // Black pull ring loop at the tip (y - 4)
                 tCtx.strokeStyle = '#111';
-                tCtx.lineWidth = 2;
+                tCtx.lineWidth = 2.5;
                 tCtx.beginPath();
-                tCtx.arc(x + w / 2, y - 3, 3.5, 0, Math.PI * 2);
+                tCtx.arc(x + w / 2, y - 4, 3.5, 0, Math.PI * 2);
                 tCtx.stroke();
 
+                // 2. Neck with Gold Foil
                 tCtx.fillStyle = foilGrad;
-                tCtx.fillRect(x + (w - neckW) / 2, y + 10, neckW, neckH - 22);
+                tCtx.fillRect(x + (w - neckW) / 2, neckTopY, neckW, neckEndY - neckTopY);
 
+                // Neck label: POWER COOL
+                tCtx.fillStyle = '#7a0a1a';
+                tCtx.fillRect(x + (w - neckW) / 2 + 2, neckTopY + 8, neckW - 4, 11);
+                tCtx.fillStyle = '#ffffff';
+                tCtx.font = 'bold 4.5px sans-serif';
+                tCtx.textAlign = 'center';
+                tCtx.fillText('POWER', x + w / 2, neckTopY + 13);
+                tCtx.fillText('COOL', x + w / 2, neckTopY + 17.5);
+
+                // 3. Smooth Curved Shoulder from neck to body
                 tCtx.fillStyle = glassGrad;
                 tCtx.beginPath();
-                tCtx.moveTo(x + (w - neckW) / 2, y + neckH - 12);
-                tCtx.lineTo(x, bodyY);
+                tCtx.moveTo(x + (w - neckW) / 2, neckEndY);
+                tCtx.bezierCurveTo(
+                    x + (w - neckW) / 2, neckEndY + 16,
+                    x, bodyY - 14,
+                    x, bodyY
+                );
                 tCtx.lineTo(x + w, bodyY);
-                tCtx.lineTo(x + (w + neckW) / 2, y + neckH - 12);
+                tCtx.bezierCurveTo(
+                    x + w, bodyY - 14,
+                    x + (w + neckW) / 2, neckEndY + 16,
+                    x + (w + neckW) / 2, neckEndY
+                );
                 tCtx.closePath();
                 tCtx.fill();
 
-                tCtx.fillRect(x, bodyY, w, bodyH);
+                // Embossed glass arch ridge on shoulder
+                tCtx.strokeStyle = 'rgba(255, 200, 100, 0.4)';
+                tCtx.lineWidth = 1.5;
+                tCtx.beginPath();
+                tCtx.arc(x + w / 2, bodyY - 4, 22, Math.PI * 0.15, Math.PI * 0.85);
+                tCtx.stroke();
 
-                if (bodyH > 75) {
-                    const labelY = bodyY + 12;
-                    const labelW = w - 10;
-                    const labelH = 55;
+                // 4. Cylindrical Body
+                const bodyH = customHeight - 82;
+                if (bodyH > 0) {
+                    tCtx.fillStyle = glassGrad;
+                    tCtx.fillRect(x, bodyY, w, bodyH);
 
-                    tCtx.fillStyle = '#fffdf7';
-                    tCtx.beginPath();
-                    tCtx.roundRect(x + 5, labelY, labelW, labelH, 6);
-                    tCtx.fill();
-                    tCtx.strokeStyle = '#dfad3b';
-                    tCtx.lineWidth = 2;
-                    tCtx.stroke();
+                    // Embossed glass base ring near ground
+                    if (bodyH > 30) {
+                        tCtx.strokeStyle = 'rgba(30, 10, 2, 0.6)';
+                        tCtx.lineWidth = 2;
+                        tCtx.strokeRect(x + 2, y + customHeight - 14, w - 4, 2);
+                    }
 
-                    tCtx.fillStyle = '#800c1c';
-                    tCtx.beginPath();
-                    tCtx.roundRect(x + 8, labelY + 14, labelW - 6, 24, 3);
-                    tCtx.fill();
-
-                    tCtx.fillStyle = '#ffffff';
-                    tCtx.font = 'bold 7px Montserrat, sans-serif';
-                    tCtx.textAlign = 'center';
-                    tCtx.fillText('★ SPECIAL ★', x + w / 2, labelY + 28);
+                    // Main Power Cool & Rohini Label
+                    if (bodyH > 75) {
+                        this.drawPowerCoolLabel(tCtx, x + w / 2, bodyY + 44, false);
+                    }
                 }
 
-                tCtx.fillStyle = 'rgba(255, 255, 255, 0.32)';
-                tCtx.fillRect(x + 7, bodyY, 4, bodyH);
+                // Vertical Specular Glass Highlight down the bottle
+                const shineGrad = tCtx.createLinearGradient(x + 10, 0, x + 20, 0);
+                shineGrad.addColorStop(0, 'rgba(255, 255, 255, 0)');
+                shineGrad.addColorStop(0.5, 'rgba(255, 255, 255, 0.38)');
+                shineGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                tCtx.fillStyle = shineGrad;
+                tCtx.fillRect(x + 10, y + capH, 8, customHeight - capH);
             }
 
             tCtx.restore();
@@ -1317,7 +1497,10 @@ Have a truly beautiful, blessed, and wonderful birthday ahead! 💖🌸`;
     btnBlowCandle.addEventListener('click', (e) => {
         e.stopPropagation();
         cardCandleFlame.classList.add('blown-out');
-        wishRevealedText.classList.remove('hidden');
+        if (wishRevealedText) {
+            wishRevealedText.innerHTML = `✨ Happy Birthday ${herName}! 🎂👑<br><span style="font-size: 0.9em; color: #ffeaa7;">May all your dreams and wishes come true! ನಿಮ್ಮ ಎಲ್ಲಾ ಕನಸುಗಳು, ಆಸೆಗಳು ಈಡೇರಲಿ! ✨</span>`;
+            wishRevealedText.classList.remove('hidden');
+        }
         window.kannadaSound.playCandleBlow();
 
         for (let i = 0; i < 40; i++) {
